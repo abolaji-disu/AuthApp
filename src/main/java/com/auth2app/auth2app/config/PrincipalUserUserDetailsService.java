@@ -14,8 +14,13 @@ import java.util.Optional;
 @Component
 public class PrincipalUserUserDetailsService implements UserDetailsService {
 
+//    @Autowired
+    private final   PrincipalUserRepository repository;
+
     @Autowired
-    private PrincipalUserRepository repository;
+    public PrincipalUserUserDetailsService(PrincipalUserRepository repo){
+        this.repository = repo;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -4,14 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +17,7 @@ public class PrincipalUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private int id;
+    private String id;
 
     private String firstName;
 
@@ -30,5 +28,16 @@ public class PrincipalUser {
     private String password;
 
     private String roles;
+
+//    public PrincipalUser(){};
+//
+//    public PrincipalUser(String firstName, String lastName, String id, String email, String password, String roles){
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//        this.roles = roles;
+//        this.id = id;
+//    }
 
 }

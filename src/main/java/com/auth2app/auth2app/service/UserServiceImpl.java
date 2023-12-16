@@ -5,6 +5,7 @@ import com.auth2app.auth2app.advice.UserAlreadyExistException;
 import com.auth2app.auth2app.models.PrincipalUser;
 import com.auth2app.auth2app.repository.PrincipalUserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService  {
 
     private final PrincipalUserRepository userRepository;
+    private final PasswordEncoder encoder;
 
     @Override
     public String createUser(CreateUserRequest createUserRequest) {
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService  {
         PrincipalUser newUser = PrincipalUser.builder()
                 .email(createUserRequest.getEmail())
                 .roles("ROLE_USER")
-                .password(createUserRequest.getPassword())
+                .password(encoder.encode(createUserRequest.getPassword()))
                 .firstName(createUserRequest.getFirstName())
                 .lastName(createUserRequest.getLastName())
                 .build();
