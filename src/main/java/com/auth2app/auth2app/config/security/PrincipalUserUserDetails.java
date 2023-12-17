@@ -1,4 +1,4 @@
-package com.auth2app.auth2app.config;
+package com.auth2app.auth2app.config.security;
 
 import com.auth2app.auth2app.models.PrincipalUser;
 import org.springframework.security.core.GrantedAuthority;

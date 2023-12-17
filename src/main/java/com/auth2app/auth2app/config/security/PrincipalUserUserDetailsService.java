@@ -1,7 +1,8 @@
-package com.auth2app.auth2app.config;
+package com.auth2app.auth2app.config.security;
 
 import com.auth2app.auth2app.models.PrincipalUser;
 import com.auth2app.auth2app.repository.PrincipalUserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,15 +13,11 @@ import java.util.Optional;
 
 
 @Component
+
 public class PrincipalUserUserDetailsService implements UserDetailsService {
 
-//    @Autowired
-    private final   PrincipalUserRepository repository;
-
     @Autowired
-    public PrincipalUserUserDetailsService(PrincipalUserRepository repo){
-        this.repository = repo;
-    }
+    private  PrincipalUserRepository repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
